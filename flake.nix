@@ -32,10 +32,11 @@
           inputsFrom = [ packages.default ];
           packages = with pkgs; [
             arduino-language-server
+            avrdude
             clang-tools
             just
             minicom
-            avrdude
+            usbutils
           ];
         };
       });
