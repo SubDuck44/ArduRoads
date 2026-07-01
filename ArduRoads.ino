@@ -129,7 +129,7 @@ void print_diagram(void) {
 	Serial.print("      │    ┆    │");
 	Serial.print(states[7] ? GREEN("⬤ ") : "◯ ");
 
-	Serial.print("\x1b[11A\x1B[99D");
+	Serial.print("\x1b[12A\r");
 }
 
 void clear_all(void) {
@@ -140,6 +140,17 @@ void clear_all(void) {
 	PINS_ALL
 }
 
+void delayp(int ms) {
+	Serial.print("[7C - ");
+	int inc = 250;
+	for(int i = 0; i < ms; i += inc) {
+		printf("[s%5d ms[u", ms - i);
+		delay(inc);
+	}
+	printf("[s%5d ms[u", 0);
+	Serial.print("\r");
+}
+
 void standard(void) {
 #define SET(x)                                                                 \
 	digitalWrite((x), HIGH);                                                   \
@@ -148,45 +159,45 @@ void standard(void) {
 	digitalWrite((x), LOW);                                                    \
 	states[(x)] = false;
 
-	Serial.print("Phase 1\n");
+	Serial.print("[1mPhase 1\n[m\n");
 	PINS_P1
 	print_diagram();
-	delay(SHORT_DELAY_MSEC);
+	delayp(SHORT_DELAY_MSEC);
 
-	Serial.print("Phase 2\n");
+	Serial.print("[1mPhase 2\n[m\n");
 	PINS_P2
 	print_diagram();
-	delay(SHORT_DELAY_MSEC);
+	delayp(SHORT_DELAY_MSEC);
 
-	Serial.print("Phase 3\n");
+	Serial.print("[1mPhase 3\n[m\n");
 	PINS_P3
 	print_diagram();
-	delay(LONG_DELAY_MSEC);
+	delayp(LONG_DELAY_MSEC);
 
-	Serial.print("Phase 4\n");
+	Serial.print("[1mPhase 4\n[m\n");
 	PINS_P4
 	print_diagram();
-	delay(SHORT_DELAY_MSEC);
+	delayp(SHORT_DELAY_MSEC);
 
-	Serial.print("Phase 5\n");
+	Serial.print("[1mPhase 5\n[m\n");
 	PINS_P5
 	print_diagram();
-	delay(SHORT_DELAY_MSEC);
+	delayp(SHORT_DELAY_MSEC);
 
-	Serial.print("Phase 6\n");
+	Serial.print("[1mPhase 6\n[m\n");
 	PINS_P6
 	print_diagram();
-	delay(SHORT_DELAY_MSEC);
+	delayp(SHORT_DELAY_MSEC);
 
-	Serial.print("Phase 7\n");
+	Serial.print("[1mPhase 7\n[m\n");
 	PINS_P7
 	print_diagram();
-	delay(LONG_DELAY_MSEC);
+	delayp(LONG_DELAY_MSEC);
 
-	Serial.print("Phase 8\n");
+	Serial.print("[1mPhase 8\n[m\n");
 	PINS_P8
 	print_diagram();
-	delay(SHORT_DELAY_MSEC);
+	delayp(SHORT_DELAY_MSEC);
 
 #undef SET
 #undef CLR
@@ -226,7 +237,7 @@ void loop_around(void) {
 
 void setup(void) {
 	Serial.begin(9600);
-	Serial.print("Reset…");
+	Serial.print("Reset…[?25l");
 #define SET(x)                                                                 \
 	pinMode((x), OUTPUT);                                                      \
 	digitalWrite((x), HIGH);
