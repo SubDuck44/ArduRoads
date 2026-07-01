@@ -6,6 +6,9 @@
 #define YELLOW(str) ("[1;33m" str "[m")
 #define GREEN(str) ("[1;32m" str "[m")
 
+#define SHORT_DELAY_MSEC 700
+#define LONG_DELAY_MSEC 20000
+
 #define PINS_ALL                                                               \
 	SET(1)                                                                     \
 	SET(2)                                                                     \
@@ -148,42 +151,42 @@ void standard(void) {
 	Serial.print("Phase 1\n");
 	PINS_P1
 	print_diagram();
-	delay(1000);
+	delay(SHORT_DELAY_MSEC);
 
 	Serial.print("Phase 2\n");
 	PINS_P2
 	print_diagram();
-	delay(1000);
+	delay(SHORT_DELAY_MSEC);
 
 	Serial.print("Phase 3\n");
 	PINS_P3
 	print_diagram();
-	delay(5000);
+	delay(LONG_DELAY_MSEC);
 
 	Serial.print("Phase 4\n");
 	PINS_P4
 	print_diagram();
-	delay(1000);
+	delay(SHORT_DELAY_MSEC);
 
 	Serial.print("Phase 5\n");
 	PINS_P5
 	print_diagram();
-	delay(1000);
+	delay(SHORT_DELAY_MSEC);
 
 	Serial.print("Phase 6\n");
 	PINS_P6
 	print_diagram();
-	delay(1000);
+	delay(SHORT_DELAY_MSEC);
 
 	Serial.print("Phase 7\n");
 	PINS_P7
 	print_diagram();
-	delay(5000);
+	delay(LONG_DELAY_MSEC);
 
 	Serial.print("Phase 8\n");
 	PINS_P8
 	print_diagram();
-	delay(1000);
+	delay(SHORT_DELAY_MSEC);
 
 #undef SET
 #undef CLR
