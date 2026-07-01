@@ -7,6 +7,8 @@
           packages = with pkgs; [
             arduino-cli
             avrdude
+            just
+            picocom
             usbutils
           ];
         };
