@@ -4,7 +4,7 @@ Oh wait...
 
 ---
 
-Raw C programming attempt by @42LoCo42
+Raw C programming attempt by [nori](https://github.com/42LoCo42)
 
 References:
 * https://github.com/ericherman/raw-c-arduino

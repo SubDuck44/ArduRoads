@@ -10,8 +10,6 @@ AVRDUDE_BAUD := 57600
 # datasheet says 8 but that fucks UART, or maybe i'm just blind
 CLOCKSPEED   := 16000000L
 
-CC := avr-gcc
-
 CFLAGS :=                    \
 	-Wall -Wextra -Wpedantic \
 	-Os                      \
@@ -32,7 +30,7 @@ all: test
 		-U flash:w:$<:i
 
 bld/%.hex: bld/%.bin
-	avr-objcopy -O ihex -R .eepom $< $@
+	avr-objcopy -O ihex $< $@
 
 bld/%.bin: raw/%.c
 	avr-gcc $(CFLAGS) $< -o $@
